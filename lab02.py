@@ -34,7 +34,7 @@ def conf_manual():
 	d.msgbox(confs,0,0)
 
 def arp():
-	code, arp_params = d.inputbox("Digite os parametros do comando ARP a ser executado","")
+	code, arp_params = d.inputbox("Digite os parametros do comando ARP a ser executado. Ex.: '-na'","")
 	arp_output = os.popen("arp " + arp_params).read()
 	d.msgbox(arp_output,0,0)
 
@@ -78,7 +78,8 @@ auto " + interfaces[0] + "\n iface " + interfaces[0] + " inet static\n address 1
 ###############################################################################################################################################################################
 def vm2_conf():
 	#chamada da janela dialog
-	code, tag = d.menu("Tela de Controle da VM2",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),("VOLTAR","")])
+	code, tag = d.menu("Tela de Controle da VM1",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),\
+("ARP","Executar Comando ARP"),("VOLTAR","")])
 
 #Sequencia de IFs verificando o conteudo da variavel TAG obtida como resposta do dialog de menu executado anteriormente.
 	if tag == "AUTOIP":
@@ -104,6 +105,10 @@ auto " + interfaces[2] + "\n iface " + interfaces[2] + " inet static\n address 1
 		confs_iptables = os.popen("iptables -L && iptables -t nat -L").read()
 		d.msgbox("INTERFACES DE REDE\n" + confs_ifaces + "\nFIREWALL\n\n" + confs_iptables,40,70)
 
+	#EXECUCAO DO COMANDO ARP
+	elif tag == "ARP":
+		arp()
+
 	else:
 		#caso o usuario selecione a opcao "VOLTAR", "Cancelar" ou aperte a tecla ESC.
 		#finaliza a execucao da funcao e volta para o loop infinito
@@ -113,7 +118,8 @@ auto " + interfaces[2] + "\n iface " + interfaces[2] + " inet static\n address 1
 #ROTINA DE CONFIGURACAO DA VM3.
 
 def vm3_conf():
-	code, tag = d.menu("Tela de Controle da VM3",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),("VOLTAR","")])
+	code, tag = d.menu("Tela de Controle da VM1",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),\
+("ARP","Executar Comando ARP"),("VOLTAR","")])
 
 	if tag == "AUTOIP":
 		os.system("echo 'auto lo \n iface lo inet loopback\n\
@@ -128,6 +134,11 @@ auto " + interfaces[1] + "\n iface " + interfaces[1] + " inet static\n address 1
 	elif tag == "CONF":
 		confs = os.popen("cat /etc/network/interfaces").read()
 		d.msgbox(confs,0,0)
+
+	#EXECUCAO DO COMANDO ARP
+	elif tag == "ARP":
+		arp()
+
 	else:
 		return
 
@@ -136,9 +147,8 @@ auto " + interfaces[1] + "\n iface " + interfaces[1] + " inet static\n address 1
 #########################################
 
 def vm4_conf():
-	code, tag = d.menu("Tela de Controle da VM4",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),("VOLTAR","")])
-	interfaces=[]
-	interfaces=os.popen("ip link | awk '$0 ~ \"enp0s[0-9]\" {gsub(\":\",\"\"); print $2}'").read().strip().split("\n")
+	code, tag = d.menu("Tela de Controle da VM1",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),\
+("ARP","Executar Comando ARP"),("VOLTAR","")])
 
 	if tag == "AUTOIP":
 		os.system("echo 'auto lo \n iface lo inet loopback\n\
@@ -152,6 +162,11 @@ auto " + interfaces[0] + "\n iface " + interfaces[0] + " inet static\n address 1
 	elif tag == "CONF":
 		confs = os.popen("cat /etc/network/interfaces").read()
 		d.msgbox(confs,0,0)
+
+	#EXECUCAO DO COMANDO ARP
+	elif tag == "ARP":
+		arp()
+
 	else:
 		return
 
