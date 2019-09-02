@@ -12,6 +12,7 @@ locale.setlocale(locale.LC_ALL, '')
 
 #criando uma instancia Dialog
 d = Dialog(dialog="dialog")
+#criando uma lista com as interfaces de rede da maquina
 interfaces = []
 interfaces=os.popen("ls /sys/class/net | grep -v lo").read().strip().split("\n")
 
