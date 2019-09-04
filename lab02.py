@@ -34,11 +34,13 @@ def conf_manual():
 	confs = os.popen("cat /etc/network/interfaces").read()
 	d.msgbox(confs,0,0)
 
+#Executa em shell o comando arp com os parametros passados pelo usuario no Dialog;
 def arp():
 	code, arp_params = d.inputbox("Digite os parametros do comando ARP a ser executado. Ex.: '-na'","")
 	arp_output = os.popen("arp " + arp_params).read()
 	d.msgbox(arp_output,0,0)
 
+#Executa em shell o comando TCPDUMP com os parametros passados pelo usuario no Dialog;
 def tcpdump():
 	code, tcpdump_params = d.inputbox("Digite os parametros do comando tcpdump a ser executado. Ex.: '-n -i enp0s3 port 22'",10,60)
 	if code == d.OK:
