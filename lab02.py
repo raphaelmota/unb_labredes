@@ -90,7 +90,7 @@ auto " + interfaces[0] + "\n iface " + interfaces[0] + " inet static\n address 1
 ###############################################################################################################################################################################
 def vm2_conf():
 	#chamada da janela dialog
-	code, tag = d.menu("Tela de Controle da VM1",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),\
+	code, tag = d.menu("Tela de Controle da VM2",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),\
 ("ARP","Executar Comando ARP"),("TCPDUMP","Executar o Comando TCPDUMP"),("VOLTAR","")])
 
 #Sequencia de IFs verificando o conteudo da variavel TAG obtida como resposta do dialog de menu executado anteriormente.
@@ -134,7 +134,7 @@ auto " + interfaces[2] + "\n iface " + interfaces[2] + " inet static\n address 1
 #ROTINA DE CONFIGURACAO DA VM3.
 
 def vm3_conf():
-	code, tag = d.menu("Tela de Controle da VM1",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),\
+	code, tag = d.menu("Tela de Controle da VM3",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),\
 ("ARP","Executar Comando ARP"),("TCPDUMP","Executar o Comando TCPDUMP"),("VOLTAR","")])
 
 	if tag == "AUTOIP":
@@ -167,7 +167,7 @@ auto " + interfaces[1] + "\n iface " + interfaces[1] + " inet static\n address 1
 #########################################
 
 def vm4_conf():
-	code, tag = d.menu("Tela de Controle da VM1",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),\
+	code, tag = d.menu("Tela de Controle da VM4",choices=[("AUTOIP","Configuracao Automatica"),("MANUAL","Configuracao Manual TCP/IP"),("CONF","Listar Configuracoes"),\
 ("ARP","Executar Comando ARP"),("TCPDUMP","Executar o Comando TCPDUMP"),("VOLTAR","")])
 
 	if tag == "AUTOIP":
