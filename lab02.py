@@ -36,9 +36,9 @@ def conf_manual():
 
 #Executa em shell o comando arp com os parametros passados pelo usuario no Dialog;
 def arp():
-	code, arp_params = d.inputbox("Digite os parametros do comando ARP a ser executado. Ex.: '-na'","")
+	code, arp_params = d.inputbox("Digite os parametros do comando ARP a ser executado. Ex.: '-na'",10,50)
 	arp_output = os.popen("arp " + arp_params).read()
-	d.msgbox(arp_output,0,0)
+	d.msgbox(arp_output,30,60)
 
 #Executa em shell o comando TCPDUMP com os parametros passados pelo usuario no Dialog;
 def tcpdump():
